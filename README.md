@@ -10,3 +10,4 @@ Todo:
 - Tidy up
 - Add build script for concatenation and minification
 - Add optional, realtime, visual representations of RGB and Hex values
+- Make it responsive
