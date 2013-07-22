@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas Colour Picker</title>
+		<script src="utils.js"></script>
+		<script src="Canvas.js"></script>
+		<script src="ColourPicker.js"></script>
+		<script src="ColourPicker.Gradient.js"></script>
+		<script src="ColourPicker.Spectrum.js"></script>
+		<script src="ColourPicker.Pointer.js"></script>
+	</head>
+	<body>
+
+		<canvas id="colour_picker" width="350" height="300"></canvas>
+
+		<script>
+window.onload = function () {
+	window.colourPicker = new ccp.ColourPicker({
+		canvas: '#colour_picker',
+		onchange: function (c) {
+			console.log('Colour changed: ' + c.getRGB(true));
+		}
+	});
+}
+		</script>
+
+	</body>
+</html>
