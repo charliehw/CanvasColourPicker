@@ -9,17 +9,31 @@
 		<script src="ColourPicker.Gradient.js"></script>
 		<script src="ColourPicker.Spectrum.js"></script>
 		<script src="ColourPicker.Pointer.js"></script>
+		<style>
+#colour_picker {float:left;}
+#values {float:left; margin-left:30px;}
+#values input {display:block;}
+		</style>
 	</head>
 	<body>
 
 		<canvas id="colour_picker" width="350" height="300"></canvas>
 
+		<fieldset id="values">
+			
+			<input type="text" id="hex">
+			<input type="text" id="rgb">
+
+		</fieldset>
+
 		<script>
 window.onload = function () {
 	window.colourPicker = new ccp.ColourPicker({
 		canvas: '#colour_picker',
-		onchange: function (c) {
-			console.log('Colour changed: ' + c.getRGB(true));
+		onchange: function (colour) {
+			document.querySelector('#values').style.backgroundColor = colour.getHex();
+			document.querySelector('#hex').value = colour.getHex();
+			document.querySelector('#rgb').value = colour.getRGB(true);
 		}
 	});
 }

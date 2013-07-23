@@ -75,7 +75,7 @@ ccp.ColourPicker.prototype = {
 
 		if (p.x < this.canvas.height) {
 			this.gradient.update.call(this.gradient, p);
-		} else {
+		} else if (p.x > this.canvas.height + 10) {
 			this.spectrum.update.call(this.spectrum, p);
 		}
 	}
