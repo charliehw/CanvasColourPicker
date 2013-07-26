@@ -6,6 +6,7 @@
 		<script src="utils.js"></script>
 		<script src="Canvas.js"></script>
 		<script src="ColourPicker.js"></script>
+		<script src="ColourPicker.Colour.js"></script>
 		<script src="ColourPicker.Gradient.js"></script>
 		<script src="ColourPicker.Spectrum.js"></script>
 		<script src="ColourPicker.Pointer.js"></script>
@@ -23,17 +24,23 @@
 			
 			<input type="text" id="hex">
 			<input type="text" id="rgb">
+			<input type="text" id="cmyk">
 
 		</fieldset>
 
 		<script>
 window.onload = function () {
+	var value = document.querySelector('#values'),
+		hex = document.querySelector('#hex'),
+		rgb = document.querySelector('#rgb');
+		cmyk = document.querySelector('#cmyk');
 	window.colourPicker = new ccp.ColourPicker({
 		canvas: '#colour_picker',
 		onchange: function (colour) {
-			document.querySelector('#values').style.backgroundColor = colour.getHex();
-			document.querySelector('#hex').value = colour.getHex();
-			document.querySelector('#rgb').value = colour.getRGB(true);
+			values.style.backgroundColor = colour.getHex();
+			hex.value = colour.getHex();
+			rgb.value = colour.getRGB(true);
+			cmyk.value = colour.getCMYK(true);
 		}
 	});
 }

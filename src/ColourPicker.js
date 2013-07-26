@@ -15,9 +15,9 @@ ccp.ColourPicker = function (opts) {
 
 	this.canvas = new ccp.Canvas(opts.canvas);
 	this.colour = new ccp.ColourPicker.Colour();
+	this.onchange = opts.onchange;
 	this.spectrum = new this.constructor.Spectrum(this);
 	this.gradient = new this.constructor.Gradient(this);
-	this.onchange = opts.onchange;
 	this.bind();
 
 };
@@ -81,49 +81,3 @@ ccp.ColourPicker.prototype = {
 	}
 
 };
-
-ccp.ColourPicker.Colour = function (d) {
-
-	if (d) {
-		this.setData(d);
-	}
-
-};
-
-ccp.ColourPicker.Colour.prototype = {
-
-	constructor: ccp.ColourPicker.Colour,
-
-	setData: function (d) {
-		this.data = d;
-	},
-
-	getRGB: function (text) {
-		if (!this.data) {
-			return null
-		} else if (text) {
-			return 'rgb(' + this.data[0] + ',' + this.data[1] + ',' + this.data[2] + ')';
-		} else {
-			return {
-				r: this.data[0],
-				g: this.data[1],
-				b: this.data[2]
-			}
-		}
-	},
-
-	getHex: function () {
-		var hex = '#',
-			part,
-			i;
-		for (i = 0; i < 3; i++) {
-			part = this.data[i].toString(16)
-			hex += part.length === 1 ? '0' + part : part;
-		}
-		return hex;
-	}
-
-};
-
-
-

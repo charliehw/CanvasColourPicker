@@ -15,7 +15,8 @@ ccp.ColourPicker.Gradient = function (cp) {
 	this.pointer = new ccp.ColourPicker.Pointer(this);
 	this.setBaseColour();
 	this.render();
-	
+	this.colourPicker.setColour(this.sampleColour());
+
 };
 
 ccp.ColourPicker.Gradient.prototype = {
