@@ -1,14 +1,12 @@
 /*
 
 	Utility functions and modules for Canvas Colour Picker
-	Author: charliehw
 
 	Licensed under the MIT license.
 	http://www.opensource.org/licenses/mit-license.php
 
 */
 
-'use strict';
 var ccp = ccp || {};
 ccp.utils = {};
 
@@ -25,29 +23,29 @@ ccp.utils.Handler = (function () {
 				i, l;
 			for (i = 0, l = events.length; i < l; i++) {
 				element.addEventListener(events[i], handler);
-	            listeners[n] = {
-	            	element: element,
-	            	event: events[i],
-	            	handler: handler
-	            };
-	            ids.push(n++);
+				listeners[n] = {
+					element: element,
+					event: events[i],
+					handler: handler
+				};
+				ids.push(n++);
 			}
             return ids;
 		},
 
 		unbind: function () {
-			var ids;
-			for (var j = 0, k = arguments.length; j < k; j++) {
+			var ids, j = 0, i = 0, k, l, h;
+			for (k = arguments.length; j < k; j++) {
 				ids = arguments[j];
-				for (var i = 0, l = ids.length; i < l; i++) {
+				for (l = ids.length; i < l; i++) {
 					if (ids[i] in listeners) {
-		                var h = listeners[ids[i]];
-		                h.element.removeEventListener(h.event, h.handler);
-		            }
-		        }
+						h = listeners[ids[i]];
+						h.element.removeEventListener(h.event, h.handler);
+					}
+				}
 			}
 		}
-	}
+	};
 
 }());
 
@@ -55,8 +53,10 @@ ccp.utils.Handler = (function () {
 ccp.utils.extend = function (target, other) {
 	target = target || {};
 	other = other || {};
-	for (name in other) {
-		target[name] = other[name];
+	for (var name in other) {
+		if (other.hasOwnProperty(name)) {
+			target[name] = other[name];
+		}
 	}
 	return target;
 };
@@ -66,10 +66,11 @@ ccp.utils.offset = function (elem) {
 		left: elem.offsetLeft,
 		top: elem.offsetTop
 	};
-	while (elem = elem.offsetParent) {
+	do {
+		elem = elem.offsetParent;
 		offset.left += elem.offsetLeft;
 		offset.top += elem.offsetTop;
-	}
+	} while (elem.offsetParent);
 	return offset;
 };
 

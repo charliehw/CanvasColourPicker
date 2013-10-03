@@ -1,4 +1,4 @@
-/*!
+/*
 
 	Canvas colour picker
 
@@ -7,17 +7,13 @@
 
 */
 
-'use strict';
-
-var ccp = ccp || {};
-
 ccp.ColourPicker = function (opts) {
 
 	this.canvas = new ccp.Canvas(opts.canvas);
-	this.colour = new ccp.ColourPicker.Colour();
+	this.colour = new ccp.Colour();
 	this.onchange = opts.onchange;
-	this.spectrum = new this.constructor.Spectrum(this);
-	this.gradient = new this.constructor.Gradient(this);
+	this.spectrum = new ccp.Spectrum(this);
+	this.gradient = new ccp.Gradient(this);
 	this.bind();
 
 };
@@ -33,10 +29,6 @@ ccp.ColourPicker.prototype = {
 	updateGradient: function (c) {
 		this.gradient.setBaseColour();
 		this.setColour(c.data);
-	},
-
-	dataToRGB: function (d) {
-		return 'rgb(' + d[0] + ',' + d[1] + ',' + d[2] + ')';
 	},
 
 	setColour: function (d) {

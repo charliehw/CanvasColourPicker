@@ -7,20 +7,18 @@
 
 */
 
-'use strict';
-
-ccp.ColourPicker.Pointer = function (parent) {
+ccp.Pointer = function (parent) {
 
 	this.colourPicker = parent.colourPicker;
 	this.canvas = this.colourPicker.canvas;
 	this.getDefaultPosition();
-	this.type = (parent.constructor === ccp.ColourPicker.Spectrum ? 'arrow' : 'radial');
+	this.type = (parent.constructor === ccp.Spectrum ? 'arrow' : 'radial');
 
 };
 
-ccp.ColourPicker.Pointer.prototype = {
+ccp.Pointer.prototype = {
 
-	constructor: ccp.ColourPicker.Pointer,
+	constructor: ccp.Pointer,
 
 	render: function () {
 		if (this.type === 'arrow') {

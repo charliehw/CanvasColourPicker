@@ -7,21 +7,19 @@
 
 */
 
-'use strict';
-
-ccp.ColourPicker.Gradient = function (cp) {
+ccp.Gradient = function (cp) {
 
 	this.colourPicker = cp;
-	this.pointer = new ccp.ColourPicker.Pointer(this);
+	this.pointer = new ccp.Pointer(this);
 	this.setBaseColour();
 	this.render();
 	this.colourPicker.setColour(this.sampleColour());
 
 };
 
-ccp.ColourPicker.Gradient.prototype = {
+ccp.Gradient.prototype = {
 
-	constructor: ccp.ColourPicker.Gradient,
+	constructor: ccp.Gradient,
 
 	// Draw the gradients
 	render: function () {
@@ -59,14 +57,14 @@ ccp.ColourPicker.Gradient.prototype = {
 		this.pointer.render();
 	},
 
-	sampleColour: function (p) {
-		var p = p || this.pointer.position;
+	sampleColour: function (q) {
+		var p = q || this.pointer.position;
 		return this.colourPicker.canvas.context.getImageData(p.x, p.y, 1, 1).data;
 	},
 
 	setBaseColour: function () {
-		var c = new ccp.ColourPicker.Colour(this.colourPicker.spectrum.sampleColour());
-		this.baseColour = c.getRGB(true);
+		var c = new ccp.Colour(this.colourPicker.spectrum.sampleColour());
+		this.baseColour = c.getRGB();
 	},
 
 	update: function (p) {

@@ -3,22 +3,17 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Canvas Colour Picker</title>
-		<script src="utils.js"></script>
-		<script src="Canvas.js"></script>
-		<script src="ColourPicker.js"></script>
-		<script src="ColourPicker.Colour.js"></script>
-		<script src="ColourPicker.Gradient.js"></script>
-		<script src="ColourPicker.Spectrum.js"></script>
-		<script src="ColourPicker.Pointer.js"></script>
+		<script src="../dist/canvas-colour-picker.js"></script>
 		<style>
-#colour_picker {float:left;}
+#colour-picker {float:left;}
 #values {float:left; margin-left:30px;}
 #values input {display:block;}
+fieldset {border:0;}
 		</style>
 	</head>
 	<body>
 
-		<canvas id="colour_picker" width="350" height="300"></canvas>
+		<canvas id="colour-picker" width="350" height="300"></canvas>
 
 		<fieldset id="values">
 			
@@ -35,12 +30,12 @@ window.onload = function () {
 		rgb = document.querySelector('#rgb');
 		cmyk = document.querySelector('#cmyk');
 	window.colourPicker = new ccp.ColourPicker({
-		canvas: '#colour_picker',
+		canvas: '#colour-picker',
 		onchange: function (colour) {
 			values.style.backgroundColor = colour.getHex();
 			hex.value = colour.getHex();
-			rgb.value = colour.getRGB(true);
-			cmyk.value = colour.getCMYK(true);
+			rgb.value = colour.getRGB();
+			cmyk.value = colour.getCMYK();
 		}
 	});
 }
