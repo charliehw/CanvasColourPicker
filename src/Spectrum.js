@@ -40,10 +40,8 @@ ccp.Spectrum.prototype = {
 	},
 
 	update: function (p) {
-		var d = this.sampleColour(p),
-			c = new ccp.Colour(d);
 		this.pointer.update({x: 0, y: p.y});
-		this.colourPicker.updateGradient(c);
+		this.colourPicker.updateGradient();
 		this.colourPicker.render();
 	}
 

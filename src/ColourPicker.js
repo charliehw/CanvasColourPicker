@@ -7,6 +7,8 @@
 
 */
 
+var ccp = ccp || {};
+
 ccp.ColourPicker = function (opts) {
 
 	this.canvas = new ccp.Canvas(opts.canvas);
@@ -26,9 +28,9 @@ ccp.ColourPicker.prototype = {
 		return this.colour;
 	},
 
-	updateGradient: function (c) {
+	updateGradient: function () {
 		this.gradient.setBaseColour();
-		this.setColour(c.data);
+		this.setColour(this.gradient.sampleColour());
 	},
 
 	setColour: function (d) {

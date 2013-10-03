@@ -7,7 +7,6 @@
 
 */
 
-var ccp = ccp || {};
 ccp.utils = {};
 
 // Interface for binding and unbinding event handlers
