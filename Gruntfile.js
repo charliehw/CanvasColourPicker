@@ -39,14 +39,19 @@ module.exports = function (grunt) {
 					ccp: true
 				}
 			}
+		},
+		qunit: {
+			all: ['tests/*.html']
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-qunit');
 
 	// Default task(s).
-	grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
+	grunt.registerTask('test', ['jshint', 'qunit']);
+	grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
 
 };
