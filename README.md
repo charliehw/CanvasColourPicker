@@ -3,7 +3,7 @@ CanvasColourPicker
 
 Colour picker using HTML5 canvas written in JavaScript.
 
-[Demo](http://charliehw.com/projects/colourpicker)
+[Demo](http://www.charliehw.com/projects/colourpicker)
 
 ##Usage
 
@@ -32,5 +32,5 @@ The onchange handler gets passed a colour object with access to Hexadecimal, RGB
 
 ##Todo
 
-- Make it responsive
 - JS tests
+- Set the picker to a particular colour value
